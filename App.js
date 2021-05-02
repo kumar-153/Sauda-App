@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import Screen from "./app/screens/Screen";
+import { View, StyleSheet } from "react-native";
+import CustomText from "./app/components/CustomText";
+import CustomButton from "./app/components/CustomButton";
+import ProductDetailsScreen from "./app/screens/ProductDetailsScreen";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ProductDetailsScreen
+      title="Product Title"
+      price="30.00"
+      date="Fri, April 2020"
+    />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 20,
+    fontSize: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#252835",
+  },
+  text: {
+    fontSize: 50,
+    fontWeight: "bold",
   },
 });
