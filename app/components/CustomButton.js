@@ -14,7 +14,7 @@ export default function CustomButton({ children, style }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.black,
     margin: 20,
     top: 30,
     padding: 10,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: {
-    color: colors.textPrimary,
+    color: colors.white,
     fontWeight: "bold",
     fontSize: 20,
   },

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import Screen from "./Screen";
 import ProductImage from "../components/ProductImage";
 import CustomText from "../components/CustomText";
