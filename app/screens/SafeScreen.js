@@ -8,7 +8,7 @@ function SafeScreen({ children, style }) {
 
 const styles = StyleSheet.create({
   screen: {
-    // backgroundColor: "#252835",
+    backgroundColor: "#f0f3f5",
     flex: 1,
     paddingTop: Constants.statusBarHeight,
   },

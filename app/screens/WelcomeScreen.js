@@ -1,31 +1,19 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
+import CustomButton from "../components/CustomButton";
 
 import CustomText from "../components/CustomText";
 import colors from "../config/colors";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          backgroundColor: colors.backgroundSecondary,
-          left: 50,
-          top: 100,
-          width: 300,
-          height: 300,
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: colors.lightViolet,
-            width: 100,
-            height: 100,
-            bottom: 0,
-          }}
-        ></View>
-        <CustomText>Yo what are you doing?</CustomText>
-      </View>
+      <CustomButton onPress={() => navigation.navigate("Register")}>
+        Register
+      </CustomButton>
+      <CustomButton onPress={() => navigation.navigate("Login")}>
+        Login
+      </CustomButton>
     </View>
   );
 }
