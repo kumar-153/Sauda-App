@@ -2,7 +2,6 @@ import React from "react";
 import { Text, StyleSheet, Platform } from "react-native";
 
 import colors from "../config/colors";
-import text from "../config/text";
 
 export default function CustomText({ children, style, ...otherProps }) {
   return (
