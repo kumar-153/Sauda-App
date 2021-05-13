@@ -13,6 +13,7 @@ import CustomText from "../components/CustomText";
 import ErrorMessage from "../components/ErrorMessage";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
+import { signInWithGoogleAsync } from "../utils/oauth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -110,14 +111,23 @@ function SignInScreen({ navigation }) {
                 error={errors.password}
                 visible={touched.password}
               />
-              <RemContainer>
+              {/* <RemContainer>
                 <Checkbox
                   status={rememberMe ? "checked" : "unchecked"}
                   onPress={() => setRememberMe(!rememberMe)}
                   color={colors.primary}
                 />
                 <RememberMe>Remember Me</RememberMe>
-              </RemContainer>
+              </RemContainer> */}
+              <CustomButton
+                onPress={() => {
+                  signInWithGoogleAsync().then(() =>
+                    navigation.navigate("Loading")
+                  );
+                }}
+              >
+                Sign In With Google
+              </CustomButton>
               <CustomButton onPress={handleSubmit}>Submit</CustomButton>
             </>
           )}
@@ -167,7 +177,7 @@ const Header = styled.Text`
   margin-bottom: 60px;
 `;
 
-const Button = styled.View`
+const GoogleContainer = styled.View`
   width: 295px;
   height: 50px;
   background-color: ${colors.primary};
@@ -177,7 +187,7 @@ const Button = styled.View`
   box-shadow: 0 10px 20px #c2cbff;
 `;
 
-const ButtonText = styled.Text`
+const GoogleSignIn = styled.Text`
   color: white;
   font-weight: 600;
   font-size: 20px;

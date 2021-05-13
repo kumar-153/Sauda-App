@@ -12,6 +12,7 @@ import CustomButton from "../components/CustomButton";
 import CustomText from "../components/CustomText";
 import ErrorMessage from "../components/ErrorMessage";
 import { AuthContext } from "../context/auth";
+import { signInWithGoogleAsync } from "../utils/oauth";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required().min(3).label("First Name"),
@@ -159,14 +160,23 @@ function SignUpScreen({ navigation }) {
                   error={errors.password}
                   visible={touched.password}
                 />
-                <RemContainer>
+                {/* <RemContainer>
                   <Checkbox
                     status={rememberMe ? "checked" : "unchecked"}
                     onPress={() => setRememberMe(!rememberMe)}
                     color={colors.primary}
                   />
                   <RememberMe>Remember Me</RememberMe>
-                </RemContainer>
+                </RemContainer> */}
+                <CustomButton
+                  onPress={() => {
+                    signInWithGoogleAsync().then(() =>
+                      navigation.navigate("Loading")
+                    );
+                  }}
+                >
+                  Sign Up With Google
+                </CustomButton>
                 <CustomButton onPress={handleSubmit}>Submit</CustomButton>
               </>
             )}

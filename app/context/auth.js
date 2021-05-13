@@ -3,7 +3,7 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 import { Alert } from "react-native";
 
-import { getUserInfo } from "../utils";
+import { getUserInfo } from "../utils/user";
 
 const initialState = {
   user: null,
@@ -42,6 +42,13 @@ const authReducer = (state, action) => {
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  const loginUser = (user) => {
+    dispatch({
+      type: "LOGIN",
+      payload: user,
+    });
+  };
+
   const register = async ({ email, password, firstName, lastName }) => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -60,7 +67,6 @@ function AuthProvider(props) {
         uid: currentUser.uid,
         avatar: require("../assets/profile.jpg"),
       };
-      console.log("User haI", user);
       dispatch({
         type: "LOGIN",
         payload: user,

@@ -6,7 +6,7 @@ import { View } from "react-native";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 import CustomButton from "../components/CustomButton";
-import { getUserInfo } from "../utils";
+import { getUserInfo } from "../utils/user";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,9 +28,7 @@ const DrawerNavigator = ({ navigation }) => {
   const currentUserUID = firebase.auth().currentUser?.uid;
 
   useEffect(() => {
-    console.log(currentUserUID);
     getUserInfo(currentUserUID).then((user) => {
-      console.log("user mil gya, drawerNav\n", user);
       if (user) {
         updateUser(user);
       }
