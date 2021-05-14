@@ -7,7 +7,8 @@ import MainStackNavigator from "./MainStackNavigator";
 import ProductsNavigator from "./ProductsNavigator";
 import colors from "../config/colors";
 import NewItemButton from "../components/NewItemButton";
-import TestScreen from "../screens/TestScreen";
+import NewItemScreen from "../screens/NewItemScreen";
+import NewItemNavigator from "./NewItemNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,8 +36,8 @@ const TabNavigator = () => (
     />
     <Tab.Screen
       name="NewItem"
-      component={TestScreen}
-      options={{
+      component={NewItemNavigator}
+      options={({ navigation }) => ({
         tabBarIcon: ({ size, color }) => (
           <MaterialCommunityIcons
             name="camera-plus"
@@ -45,9 +46,9 @@ const TabNavigator = () => (
           />
         ),
         tabBarButton: () => (
-          <NewItemButton onPress={() => alert("Add Item on Sale")} />
+          <NewItemButton onPress={() => navigation.navigate("NewItem")} />
         ),
-      }}
+      })}
     />
     <Tab.Screen
       name="Profile"

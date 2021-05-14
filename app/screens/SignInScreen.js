@@ -14,6 +14,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 import { signInWithGoogleAsync } from "../utils/oauth";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -21,97 +22,103 @@ const validationSchema = Yup.object().shape({
 });
 
 function SignInScreen({ navigation }) {
+  const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const { login } = useContext(AuthContext);
   return (
-    <Container>
-      <Modal style={styles.modal}>
-        <Logo />
-        <Header>Sign In</Header>
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          onSubmit={(user) => {
-            login(user);
-            navigation.navigate("Loading");
-          }}
-          validationSchema={validationSchema}
-        >
-          {({
-            handleChange,
-            handleSubmit,
-            errors,
-            setFieldTouched,
-            touched,
-          }) => (
-            <>
-              <CustomTextInput
-                type="outlined"
-                label="Email"
-                placeholder="Enter email..."
-                keyboardType="email-address"
-                onBlur={() => setFieldTouched("email")}
-                onChangeText={handleChange("email")}
-                left={
-                  <TextInput.Icon
-                    name={() => (
-                      <MaterialCommunityIcons
-                        name="email"
-                        size={24}
-                        color="black"
-                      />
-                    )}
-                  />
-                }
-              />
-              <ErrorMessage error={errors.email} visible={touched.email} />
-              <CustomTextInput
-                type="outlined"
-                label="Password"
-                placeholder="Enter Password..."
-                onBlur={() => setFieldTouched("password")}
-                secureTextEntry={showPassword}
-                onChangeText={handleChange("password")}
-                left={
-                  <TextInput.Icon
-                    name={() => (
-                      <MaterialCommunityIcons
-                        name="lock"
-                        size={24}
-                        color="black"
-                      />
-                    )}
-                  />
-                }
-                right={
-                  <TextInput.Icon
-                    name={() =>
-                      showPassword ? (
+    <>
+      <ActivityIndicator visible={loading} />
+      <Container>
+        <Modal style={styles.modal}>
+          <Logo />
+          <Header>Sign In</Header>
+          <Formik
+            initialValues={{
+              email: "",
+              password: "",
+            }}
+            onSubmit={(user) => {
+              setLoading(true);
+              login(user).then(() => {
+                setLoading(false);
+                navigation.navigate("Loading");
+              });
+            }}
+            validationSchema={validationSchema}
+          >
+            {({
+              handleChange,
+              handleSubmit,
+              errors,
+              setFieldTouched,
+              touched,
+            }) => (
+              <>
+                <CustomTextInput
+                  type="outlined"
+                  label="Email"
+                  placeholder="Enter email..."
+                  keyboardType="email-address"
+                  onBlur={() => setFieldTouched("email")}
+                  onChangeText={handleChange("email")}
+                  left={
+                    <TextInput.Icon
+                      name={() => (
                         <MaterialCommunityIcons
-                          name="eye-off"
+                          name="email"
                           size={24}
                           color="black"
                         />
-                      ) : (
+                      )}
+                    />
+                  }
+                />
+                <ErrorMessage error={errors.email} visible={touched.email} />
+                <CustomTextInput
+                  type="outlined"
+                  label="Password"
+                  placeholder="Enter Password..."
+                  onBlur={() => setFieldTouched("password")}
+                  secureTextEntry={showPassword}
+                  onChangeText={handleChange("password")}
+                  left={
+                    <TextInput.Icon
+                      name={() => (
                         <MaterialCommunityIcons
-                          name="eye"
+                          name="lock"
                           size={24}
                           color="black"
                         />
-                      )
-                    }
-                    onPress={() => setShowPassword(!showPassword)}
-                  />
-                }
-              />
-              <ErrorMessage
-                error={errors.password}
-                visible={touched.password}
-              />
-              {/* <RemContainer>
+                      )}
+                    />
+                  }
+                  right={
+                    <TextInput.Icon
+                      name={() =>
+                        showPassword ? (
+                          <MaterialCommunityIcons
+                            name="eye-off"
+                            size={24}
+                            color="black"
+                          />
+                        ) : (
+                          <MaterialCommunityIcons
+                            name="eye"
+                            size={24}
+                            color="black"
+                          />
+                        )
+                      }
+                      onPress={() => setShowPassword(!showPassword)}
+                    />
+                  }
+                />
+                <ErrorMessage
+                  error={errors.password}
+                  visible={touched.password}
+                />
+                {/* <RemContainer>
                 <Checkbox
                   status={rememberMe ? "checked" : "unchecked"}
                   onPress={() => setRememberMe(!rememberMe)}
@@ -119,21 +126,24 @@ function SignInScreen({ navigation }) {
                 />
                 <RememberMe>Remember Me</RememberMe>
               </RemContainer> */}
-              <CustomButton
-                onPress={() => {
-                  signInWithGoogleAsync().then(() =>
-                    navigation.navigate("Loading")
-                  );
-                }}
-              >
-                Sign In With Google
-              </CustomButton>
-              <CustomButton onPress={handleSubmit}>Submit</CustomButton>
-            </>
-          )}
-        </Formik>
-      </Modal>
-    </Container>
+                <CustomButton
+                  onPress={() => {
+                    setLoading(true);
+                    signInWithGoogleAsync().then(() => {
+                      setLoading(false);
+                      navigation.navigate("Loading");
+                    });
+                  }}
+                >
+                  Sign In With Google
+                </CustomButton>
+                <CustomButton onPress={handleSubmit}>Submit</CustomButton>
+              </>
+            )}
+          </Formik>
+        </Modal>
+      </Container>
+    </>
   );
 }
 

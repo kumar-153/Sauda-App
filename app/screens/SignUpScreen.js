@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import { TextInput, Checkbox } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
 });
 
 function SignUpScreen({ navigation }) {
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const { register } = useContext(AuthContext);
 

@@ -13,7 +13,7 @@ export default function CustomText({ children, style, ...otherProps }) {
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.textPrimary,
+    color: colors.black,
     ...Platform.select({
       ios: {
         fontSize: 20,

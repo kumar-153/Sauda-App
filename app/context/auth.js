@@ -42,13 +42,6 @@ const authReducer = (state, action) => {
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const loginUser = (user) => {
-    dispatch({
-      type: "LOGIN",
-      payload: user,
-    });
-  };
-
   const register = async ({ email, password, firstName, lastName }) => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -91,7 +84,6 @@ function AuthProvider(props) {
   };
 
   function updateUser(user) {
-    console.log("Update user hai", user);
     dispatch({
       type: "UPDATE_USER",
       payload: { ...user, avatar: require("../assets/profile.jpg") },
