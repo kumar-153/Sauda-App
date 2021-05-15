@@ -5,6 +5,7 @@ import TabNavigator from "./TabNavigator";
 import { View } from "react-native";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
+import DrawerContent from "../components/DrawerContent";
 import CustomButton from "../components/CustomButton";
 import { getUserInfo } from "../utils/user";
 
@@ -35,7 +36,10 @@ const DrawerNavigator = ({ navigation }) => {
     });
   }, []);
   return (
-    <Drawer.Navigator intialRoute="Feed">
+    <Drawer.Navigator
+      intialRoute="Feed"
+      drawerContent={(props) => <DrawerContent {...props} />}
+    >
       <Drawer.Screen name="Feed" component={TabNavigator} />
       {/* <Drawer.Screen name="SignIn" component={SignInScreen} /> */}
       {/* <Drawer.Screen name="SignUp" component={SignUpScreen} /> */}
