@@ -1,14 +1,37 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import CustomCard from "../components/CustomCard";
+import styled from "styled-components";
+import { products } from "../config/data";
 
-function YourOrdersScreen() {
+export default function YourOrdersScreen({ navigation }) {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView style={{ height: "100%" }}>
+        <Header>Your Past Orders...</Header>
+        {products.map((product, idx) => (
+          <TouchableOpacity
+            key={idx}
+            style={{ padding: 10 }}
+            onPress={() => navigation.navigate("ProductDetails", product)}
+          >
+            <CustomCard product={product} />
+          </TouchableOpacity>
+        ))}
+        <Padding>No more results....</Padding>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const Header = styled.Text`
+  font-weight: bold;
+  padding: 30px 0 0 30px;
+  font-size: 30px;
+`;
 
-export default YourOrdersScreen;
+const Padding = styled.Text`
+  font-size: 18px;
+  font-weight: 300;
+  padding: 20px;
+`;
