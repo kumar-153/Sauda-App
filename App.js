@@ -1,5 +1,6 @@
 // @refresh reset
-import React from "react";
+import React, { useState } from "react";
+import AppLoading from "expo-app-loading";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";

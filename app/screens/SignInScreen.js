@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
 import { TextInput, Checkbox } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -30,8 +30,27 @@ function SignInScreen({ navigation }) {
     <>
       <ActivityIndicator visible={loading} />
       <Container>
+        <ImageBackground
+          source={require("../assets/splash-1.png")}
+          style={{
+            position: "absolute",
+            zIndex: -1,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+        <View
+          style={{
+            position: "absolute",
+            zIndex: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "black",
+            opacity: 0.5,
+          }}
+        />
         <Modal style={styles.modal}>
-          <Logo />
+          <Logo top={10} />
           <Header>Sign In</Header>
           <Formik
             initialValues={{
@@ -173,6 +192,7 @@ const Modal = styled.View`
   width: 355px;
   height: 600px;
   background: white;
+  opacity: 0.8;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   display: flex;

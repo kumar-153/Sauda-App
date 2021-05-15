@@ -38,7 +38,7 @@ const DrawerNavigator = ({ navigation }) => {
   return (
     <Drawer.Navigator
       intialRoute="Feed"
-      drawerContent={(props) => <DrawerContent {...props} />}
+      // drawerContent={(props) => <DrawerContent {...props} />}
     >
       <Drawer.Screen name="Feed" component={TabNavigator} />
       {/* <Drawer.Screen name="SignIn" component={SignInScreen} /> */}
