@@ -1,19 +1,15 @@
 // @refresh reset
 import React, { useState } from "react";
-import AppLoading from "expo-app-loading";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import * as firebase from "firebase";
 import "firebase/firestore";
 
-import { AuthContext, AuthProvider } from "./app/context/auth";
+import { AuthProvider } from "./app/context/auth";
 import { firebaseConfig } from "./app/config/env_const";
 import colors from "./app/config/colors";
 import AuthNavigator from "./app/navigation/AuthNavigator";
-import { useContext } from "react";
-import DrawerNavigator from "./app/navigation/DrawerNavigator";
-import { useEffect } from "react";
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);

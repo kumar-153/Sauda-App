@@ -13,7 +13,7 @@ const products = [
     ownerImage: require("../assets/profile.jpg"),
   },
   {
-    id: 1,
+    id: 2,
     title: "iPhone X",
     image: require("../assets/prod-1.jpg"),
     price: "2300",
@@ -21,7 +21,7 @@ const products = [
     ownerImage: require("../assets/profile.jpg"),
   },
   {
-    id: 1,
+    id: 3,
     title: "iPhone X",
     image: require("../assets/prod-1.jpg"),
     price: "2300",
@@ -29,7 +29,7 @@ const products = [
     ownerImage: require("../assets/profile.jpg"),
   },
   {
-    id: 1,
+    id: 4,
     title: "iPhone X",
     image: require("../assets/prod-1.jpg"),
     price: "2300",
@@ -37,7 +37,7 @@ const products = [
     ownerImage: require("../assets/profile.jpg"),
   },
   {
-    id: 1,
+    id: 5,
     title: "iPhone X",
     image: require("../assets/prod-1.jpg"),
     price: "2300",

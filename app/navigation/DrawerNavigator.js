@@ -8,6 +8,8 @@ import { AuthContext } from "../context/auth";
 import DrawerContent from "../components/DrawerContent";
 import CustomButton from "../components/CustomButton";
 import { getUserInfo } from "../utils/user";
+import YourOrdersScreen from "../screens/YourOrdersScreen";
+import YourPostsScreen from "../screens/YourPostsScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -41,6 +43,8 @@ const DrawerNavigator = ({ navigation }) => {
       // drawerContent={(props) => <DrawerContent {...props} />}
     >
       <Drawer.Screen name="Feed" component={TabNavigator} />
+      <Drawer.Screen name="Your Orders" component={YourOrdersScreen} />
+      <Drawer.Screen name="Your Posts" component={YourPostsScreen} />
       {/* <Drawer.Screen name="SignIn" component={SignInScreen} /> */}
       {/* <Drawer.Screen name="SignUp" component={SignUpScreen} /> */}
       <Drawer.Screen name="LogOut">

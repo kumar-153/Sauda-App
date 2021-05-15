@@ -7,7 +7,7 @@ function ActivityIndicator({ visible = false }) {
   return (
     <View style={styles.overlay}>
       <LottieView
-        source={require("../assets/animations/loader_alt.json")}
+        source={require("../assets/animations/loading.json")}
         autoplay
         loop
       />
