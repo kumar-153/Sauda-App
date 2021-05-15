@@ -11,6 +11,7 @@ import CustomButton from "../components/CustomButton";
 import colors from "../config/colors";
 import FormImagePicker from "../components/FormImagePicker";
 import CustomPicker from "../components/CustomPicker";
+import { addProduct } from "../config/data";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).label("Title"),
@@ -38,10 +39,14 @@ function RentItemScreen({ navigation }) {
             description: "",
             features: "",
             category: null,
-            images: [],
+            image: [],
           }}
           onSubmit={(data) => {
-            console.log(data);
+            data.features = [
+              ...data.features.split().map((feature) => feature.trim()),
+            ];
+            data.type = "rent";
+            addProduct(data);
             navigation.navigate("PickItem");
           }}
           validationSchema={validationSchema}
@@ -56,7 +61,7 @@ function RentItemScreen({ navigation }) {
             setFieldValue,
           }) => (
             <>
-              <FormImagePicker name="images" style={{ width: "100%" }} />
+              <FormImagePicker name="image" style={{ width: "100%" }} />
               <CustomTextInput
                 type="outlined"
                 label="Title"
@@ -166,7 +171,7 @@ function RentItemScreen({ navigation }) {
                           {feature.trim()}
                         </Chip>
                       );
-                    }
+                    } else return <View key={idx}></View>;
                   })}
                 </View>
               )}

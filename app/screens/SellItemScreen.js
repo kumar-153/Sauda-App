@@ -11,6 +11,7 @@ import CustomButton from "../components/CustomButton";
 import colors from "../config/colors";
 import FormImagePicker from "../components/FormImagePicker";
 import CustomPicker from "../components/CustomPicker";
+import { addProduct } from "../config/data";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).label("Title"),
@@ -22,12 +23,17 @@ const validationSchema = Yup.object().shape({
 });
 
 const items = [
-  { label: "How you are", value: 1 },
-  { label: "do you think", value: 10 },
-  { label: "So this you", value: 30 },
+  { label: "Furniture", value: 1 },
+  { label: "Electronics", value: 2 },
+  { label: "Clothing", value: 3 },
+  { label: "Books", value: 4 },
+  { label: "Stationary", value: 5 },
+  { label: "Food Items", value: 6 },
+  { label: "Household Items", value: 7 },
+  { label: "Miscellaneous", value: 8 },
 ];
 
-function SellItemScreen() {
+function SellItemScreen({ navigation }) {
   return (
     <ScrollView style={{ height: "100%" }}>
       <SafeScreen style={styles.container}>
@@ -40,7 +46,14 @@ function SellItemScreen() {
             category: null,
             images: [],
           }}
-          onSubmit={() => console.log("Submit krdiya")}
+          onSubmit={(product) => {
+            product.features = [
+              ...product.features.split().map((feature) => feature.trim()),
+            ];
+            product.type = "sale";
+            addProduct(product);
+            navigation.navigate("PickItem");
+          }}
           validationSchema={validationSchema}
         >
           {({

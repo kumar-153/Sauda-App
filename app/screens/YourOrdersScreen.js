@@ -2,9 +2,10 @@ import React from "react";
 import { SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import CustomCard from "../components/CustomCard";
 import styled from "styled-components";
-import { products } from "../config/data";
+import { getProducts } from "../config/data";
 
 export default function YourOrdersScreen({ navigation }) {
+  const products = getProducts();
   return (
     <SafeAreaView>
       <ScrollView style={{ height: "100%" }}>

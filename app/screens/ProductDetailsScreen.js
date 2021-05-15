@@ -27,7 +27,7 @@ function ProductDetailsScreen({ route }) {
   return (
     <ScrollView>
       <Screen>
-        <ProductImage source={image} />
+        <ProductImage source={image[0]} />
         <View style={styles.header}>
           <CustomText style={styles.headerTitle}>{title}</CustomText>
           <View style={styles.buying}>
