@@ -7,7 +7,13 @@ export default function CustomCard({ product }) {
   return (
     <Container style={{ elevation: 10 }}>
       <Cover>
-        <CoverImage source={product.image} />
+        <CoverImage
+          source={
+            product.image[0]
+              ? product.image[0]
+              : require("../assets/prod-1.jpg")
+          }
+        />
       </Cover>
       <Content>
         <Avatar source={product.ownerImage} />

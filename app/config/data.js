@@ -1,9 +1,9 @@
-export const products = [
+let products = [
   {
     id: 1,
     type: "rent",
     title: "iPhone X",
-    image: require("../assets/prod-1.jpg"),
+    image: [require("../assets/prod-1.jpg")],
     price: "2300",
     owner: "Rajdeep Singh",
     ownerImage: require("../assets/profile.jpg"),
@@ -20,7 +20,7 @@ export const products = [
     id: 2,
     type: "sale",
     title: "iPhone X",
-    image: require("../assets/prod-1.jpg"),
+    image: [require("../assets/prod-1.jpg")],
     price: "2300",
     owner: "Rajdeep Singh",
     ownerImage: require("../assets/profile.jpg"),
@@ -37,7 +37,7 @@ export const products = [
     id: 3,
     type: "rent",
     title: "iPhone X",
-    image: require("../assets/prod-1.jpg"),
+    image: [require("../assets/prod-1.jpg")],
     price: "2300",
     owner: "Rajdeep Singh",
     ownerImage: require("../assets/profile.jpg"),
@@ -54,7 +54,7 @@ export const products = [
     id: 4,
     type: "rent",
     title: "iPhone X",
-    image: require("../assets/prod-1.jpg"),
+    image: [require("../assets/prod-1.jpg")],
     price: "2300",
     owner: "Rajdeep Singh",
     ownerImage: require("../assets/profile.jpg"),
@@ -71,7 +71,7 @@ export const products = [
     id: 5,
     type: "sale",
     title: "iPhone X",
-    image: require("../assets/prod-1.jpg"),
+    image: [require("../assets/prod-1.jpg")],
     price: "2300",
     owner: "Rajdeep Singh",
     ownerImage: require("../assets/profile.jpg"),
@@ -85,3 +85,7 @@ export const products = [
     ],
   },
 ];
+
+export const getProducts = () => products;
+
+export const addProduct = (newProduct) => products.push(newProduct);
