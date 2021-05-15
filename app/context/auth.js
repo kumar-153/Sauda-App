@@ -65,7 +65,7 @@ function AuthProvider(props) {
         payload: user,
       });
     } catch (err) {
-      Alert.alert("There is something wrong!!!!", err.message);
+      throw new Error(err);
     }
   };
 
@@ -79,7 +79,7 @@ function AuthProvider(props) {
         payload: { ...user, avatar: require("../assets/profile.jpg") },
       });
     } catch (err) {
-      Alert.alert("There is something wrong!", err.message);
+      throw new Error(err);
     }
   };
 
@@ -95,7 +95,7 @@ function AuthProvider(props) {
       await firebase.auth().signOut();
       dispatch({ type: "LOGOUT" });
     } catch (err) {
-      Alert.alert("There is something wrong", err.message);
+      throw new Error(err);
     }
   };
 

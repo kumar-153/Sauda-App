@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
-import { TextInput } from "react-native-paper";
+import { Snackbar, TextInput } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -9,10 +9,10 @@ import styled from "styled-components";
 import colors from "../config/colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
-import CustomText from "../components/CustomText";
 import ErrorMessage from "../components/ErrorMessage";
 import { AuthContext } from "../context/auth";
 import { signInWithGoogleAsync } from "../utils/oauth";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required().min(3).label("First Name"),
@@ -23,10 +23,12 @@ const validationSchema = Yup.object().shape({
 
 function SignUpScreen({ navigation }) {
   const [showPassword, setShowPassword] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { register } = useContext(AuthContext);
 
   return (
     <ScrollView contentContainerStyle={{ width: "100%", height: "100%" }}>
+      <ActivityIndicator visible={loading} />
       <Container>
         <ImageBackground
           source={require("../assets/splash-1.png")}
@@ -58,8 +60,17 @@ function SignUpScreen({ navigation }) {
               password: "",
             }}
             onSubmit={(user) => {
-              register(user);
-              navigation.navigate("Loading");
+              setLoading(true);
+              register(user)
+                .then(() => {
+                  setLoading(false);
+                  navigation.navigate("Loading");
+                })
+                .catch((err) => {
+                  setLoading(false);
+                  Alert.alert(err.message);
+                  navigation.replace("Welcome");
+                });
             }}
             validationSchema={validationSchema}
           >
@@ -186,6 +197,7 @@ function SignUpScreen({ navigation }) {
                   />
                   <RememberMe>Remember Me</RememberMe>
                 </RemContainer> */}
+                <CustomButton onPress={handleSubmit}>Submit</CustomButton>
                 <CustomButton
                   onPress={() => {
                     signInWithGoogleAsync().then(() =>
@@ -195,7 +207,6 @@ function SignUpScreen({ navigation }) {
                 >
                   Sign Up With Google
                 </CustomButton>
-                <CustomButton onPress={handleSubmit}>Submit</CustomButton>
               </>
             )}
           </Formik>

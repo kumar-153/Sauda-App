@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 import { TextInput, Checkbox } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -9,7 +15,6 @@ import styled from "styled-components";
 import colors from "../config/colors";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
-import CustomText from "../components/CustomText";
 import ErrorMessage from "../components/ErrorMessage";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
@@ -23,7 +28,6 @@ const validationSchema = Yup.object().shape({
 
 function SignInScreen({ navigation }) {
   const [loading, setLoading] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const { login } = useContext(AuthContext);
   return (
@@ -59,10 +63,16 @@ function SignInScreen({ navigation }) {
             }}
             onSubmit={(user) => {
               setLoading(true);
-              login(user).then(() => {
-                setLoading(false);
-                navigation.navigate("Loading");
-              });
+              login(user)
+                .then(() => {
+                  setLoading(false);
+                  navigation.navigate("Loading");
+                })
+                .catch((err) => {
+                  setLoading(false);
+                  Alert.alert(err.message);
+                  navigation.replace("Welcome");
+                });
             }}
             validationSchema={validationSchema}
           >
@@ -145,6 +155,7 @@ function SignInScreen({ navigation }) {
                 />
                 <RememberMe>Remember Me</RememberMe>
               </RemContainer> */}
+                <CustomButton onPress={handleSubmit}>Submit</CustomButton>
                 <CustomButton
                   onPress={() => {
                     setLoading(true);
@@ -156,7 +167,6 @@ function SignInScreen({ navigation }) {
                 >
                   Sign In With Google
                 </CustomButton>
-                <CustomButton onPress={handleSubmit}>Submit</CustomButton>
               </>
             )}
           </Formik>

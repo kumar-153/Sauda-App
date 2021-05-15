@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Snackbar } from "react-native-paper";
 import colors from "../config/colors";
 
-const CustomSnackbar = ({ visible, setVisible, message }) => {
+const CustomSnackbar = ({ visible, message, setVisible }) => {
   const onDismissSnackBar = () => setVisible(false);
 
   return (
