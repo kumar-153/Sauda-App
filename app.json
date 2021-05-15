@@ -13,7 +13,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -26,6 +28,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "An app to exchange of items by either Selling or Renting within a particular Community (Aimed At IITJ)."
+    "description": "An app to exchange of items by either Selling or Renting within a particular Community (Aimed At IITJ).",
+    "githubUrl": "https://github.com/harishk2169/Sauda-App"
   }
 }

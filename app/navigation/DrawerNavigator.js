@@ -62,8 +62,6 @@ const DrawerNavigator = ({ navigation }) => {
       <Drawer.Screen name="Feed" component={TabNavigator} />
       <Drawer.Screen name="Your Orders" component={MainStackNavigator} />
       <Drawer.Screen name="Your Posts" component={MainStackNavigator} />
-      {/* <Drawer.Screen name="SignIn" component={SignInScreen} /> */}
-      {/* <Drawer.Screen name="SignUp" component={SignUpScreen} /> */}
       <Drawer.Screen name="LogOut">
         {() => (
           <SignOut
