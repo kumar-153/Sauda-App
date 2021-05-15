@@ -85,7 +85,7 @@ let products = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     type: "sale exclusive",
     title: "Jio Phone",
     image: [require("../assets/prod-1.jpg")],
