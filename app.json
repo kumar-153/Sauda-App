@@ -10,12 +10,18 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "ios": {
+      "bundleIdentifier": "com.saudaIITJ.sauda",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.saudaIITJ.sauda",
+      "versionCode": 1
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
