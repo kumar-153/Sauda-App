@@ -6,6 +6,7 @@ import TitleBar from "../components/TitleBar";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 import colors from "../config/colors";
+import ViewImageScreen from "../components/ViewImageScreen";
 
 const ProductStack = createStackNavigator();
 
@@ -37,6 +38,12 @@ const ProductsNavigator = () => {
       <ProductStack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}
+        options={{ headerShown: false }}
+      />
+      <ProductStack.Screen
+        name="ImageScreen"
+        component={ViewImageScreen}
+        options={{ headerShown: false }}
       />
     </ProductStack.Navigator>
   );

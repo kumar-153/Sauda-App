@@ -25,7 +25,6 @@ const MainStackNavigator = () => {
         options={{ headerLeft: null }}
       />
       <Stack.Screen name="Product" component={ProductDetailsScreen} />
-      <Stack.Screen name="ImageScreen" component={ImageScreen} />
     </Stack.Navigator>
   );
 };
