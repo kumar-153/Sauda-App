@@ -1,16 +1,25 @@
-name: Build Android and iOS
+name: CI/CD
+
 on:
   push:
-    branches:
-      - master
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
-  install-and-test:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: Install node modules
         run: |
           yarn install
-      - name: Run tests
+      - name: Run test
         run: |
           yarn test
