@@ -1,33 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> Safe Screen Component Test 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "backgroundColor": "#f0f3f5",
-        "flex": 1,
-        "paddingTop": 44,
-      },
-      undefined,
-    ]
-  }
-/>
-`;
-
-exports[`<App /> Screen Component Test 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flex": 1,
-      },
-      undefined,
-    ]
-  }
-/>
-`;
-
 exports[`<App /> should match snapshot 1`] = `
 <View
   style={
