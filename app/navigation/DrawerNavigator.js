@@ -66,9 +66,8 @@ const DrawerNavigator = ({ navigation }) => {
         {() => (
           <SignOut
             onPress={() => {
-              logout()
-                .then()
-                .error((err) => Alert.alert(err.message));
+              logout().catch((err) => Alert.alert(err.message));
+              navigation.replace("Welcome");
             }}
           />
         )}
