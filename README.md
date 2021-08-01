@@ -1,7 +1,7 @@
 # Sauda-App
 
-- A React Native App for Buying/Selling/Renting Items within IITJ Campus.
-- Developed for Software Engineering (CSL2060) Course Project.
+-   A React Native App for Buying/Selling/Renting Items within IITJ Campus.
+-   Developed for Software Engineering (CSL2060) Course Project.
 
 ## Steps to follow to contribute
 
@@ -26,8 +26,9 @@ This will install the required dependencies on your local machine.
 
 ### Testing Process
 
-- All the tests are written in **tests** folder.
-- The entire CI/CD Workflow .yml file can be found in ".github/workflows/tests.yml".
-- It creates a CI/CD Github Pipeline for the project.
-- _AppTest.js_ runs test which compare whether the **App.js** Component snapshot matches with the component or not using **JEST**.
-- _screenTest.js_ runs test which compare whether the **Screen.js** and **SafeScreen.js** Component snapshot matches with the component or not using **JEST**.
+-   All the tests are written in **tests** folder.
+-   The entire CI/CD Workflow .yml file can be found in ".github/workflows/tests.yml".
+-   It creates a CI/CD Github Pipeline for the project.
+-   _AppTest.js_ runs test which compare whether the **App.js** Component snapshot matches with the component or not using **JEST**.
+-   _screenTest.js_ runs test which compare whether the **Screen.js** and **SafeScreen.js** Component snapshot matches with the component or not using **JEST**.
+-   Reliable app for students of IITJ within campus
