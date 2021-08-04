@@ -23,9 +23,14 @@ const validationSchema = Yup.object().shape({
 });
 
 const items = [
-  { label: "How you are", value: 1 },
-  { label: "do you think", value: 10 },
-  { label: "So this you", value: 30 },
+  { label: "Furniture", value: 1 },
+  { label: "Electronics", value: 2 },
+  { label: "Clothing", value: 3 },
+  { label: "Books", value: 4 },
+  { label: "Stationary", value: 5 },
+  { label: "Food Items", value: 6 },
+  { label: "Household Items", value: 7 },
+  { label: "Miscellaneous", value: 8 },
 ];
 
 function RentItemScreen({ navigation }) {
